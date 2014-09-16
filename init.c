@@ -9,7 +9,8 @@
  * Osc. Switch Enable = Disabled
  */
 //__CONFIG(1, HS & OSCSDIS);
-code char at __CONFIG1H _config1h = _OSC_HS_1H & _OSCS_OFF_1H;
+//code char at __CONFIG1H _config1h = _OSC_HS_1H & _OSCS_OFF_1H;
+#pragma config OSC=HS, OSCS=OFF
 
 /*
  * Brown Out Detect = Enabled

@@ -5,7 +5,7 @@ INCLUDE=-I. -I/opt/sdcc-3.4.0/lib/pic16
 LDFLAGS=-I/opt/sdcc-3.4.0/lib/pic16
 
 LIBS=libc18f.lib libsdcc.lib libio18f452.lib
-PROCESSOR_FLAGS=-mpic16 -p18f452
+PROCESSOR_FLAGS=-mpic16 -p18f452 --use-non-free
 SDCC=/opt/sdcc-3.4.0/bin/sdcc
 GPASM=gpasm
 CFLAGS=-V -c
