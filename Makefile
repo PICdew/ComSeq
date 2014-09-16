@@ -1,12 +1,12 @@
 # Makefile for the CESRF command sequencer project ComSeq
 
-INCLUDE=-I. -I/opt/sdcc-3.1.0/lib/pic16
+INCLUDE=-I. -I/opt/sdcc-3.4.0/lib/pic16
 #LDFLAGS=-w -I/usr/local/share/sdcc/lib/pic16 -c -s /usr/local/share/gputils/lkr/18f452.lkr
-LDFLAGS=-I/opt/sdcc-3.1.0/lib/pic16
+LDFLAGS=-I/opt/sdcc-3.4.0/lib/pic16
 
 LIBS=libc18f.lib libsdcc.lib libio18f452.lib
 PROCESSOR_FLAGS=-mpic16 -p18f452
-SDCC=sdcc
+SDCC=/opt/sdcc-3.4.0/bin/sdcc
 GPASM=gpasm
 CFLAGS=-V -c
 #CFLAGS=-V -S
