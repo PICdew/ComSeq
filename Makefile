@@ -1,16 +1,17 @@
 # Makefile for the CESRF command sequencer project ComSeq
 
-INCLUDE=-I. -I/opt/sdcc-3.4.0/lib/pic16
-#LDFLAGS=-w -I/usr/local/share/sdcc/lib/pic16 -c -s /usr/local/share/gputils/lkr/18f452.lkr
-LDFLAGS=-I/opt/sdcc-3.4.0/lib/pic16
-
-LIBS=libc18f.lib libsdcc.lib libio18f452.lib
-PROCESSOR_FLAGS=-mpic16 -p18f452 --use-non-free
-SDCC=/opt/sdcc-3.4.0/bin/sdcc
+SDCCDIR=/opt/sdcc-3.5.0/
+SDCC=$(SDCCDIR)bin/sdcc
 GPASM=gpasm
-CFLAGS=-V -c
-#CFLAGS=-V -S
 GPLINK=gplink
+
+INCLUDE=-I.
+PROCESSOR_FLAGS=-mpic16 -p18f452 --use-non-free
+
+CFLAGS=-V -c
+LDFLAGS=--use-crt=crt0.o -Wl -m
+
+LIBS=libc18f.lib #libsdcc.lib libio18f452.lib
 
 OBJS=init.o isr.o main.o
 

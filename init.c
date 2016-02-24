@@ -10,6 +10,8 @@
  */
 //__CONFIG(1, HS & OSCSDIS);
 //code char at __CONFIG1H _config1h = _OSC_HS_1H & _OSCS_OFF_1H;
+//__code char __at __CONFIG1H _conf0 = _OSC_HS & _OSCS_OFF_1H;
+// use the pragma method for newer sdcc 3.4ish plus
 #pragma config OSC=HS, OSCS=OFF
 
 /*
@@ -20,13 +22,16 @@
  * Watchdog Postscaler = 1:1
  */
 //__CONFIG(2, BOREN & BORV42 & PWRTEN & WDTDIS & WDTPS1);
-code char at __CONFIG2L config2l = 0xFF & _PUT_ON_2L & _BODEN_ON_2L & _BODENV_4_2V_2L;
-code char at __CONFIG2H config2h = 0xFF & _WDT_OFF_2H;
+//code char at __CONFIG2L config2l = 0xFF & _PUT_ON_2L & _BODEN_ON_2L & _BODENV_4_2V_2L;
+#pragma config PWRT=ON, BOR=ON, BORV=42
+//code char at __CONFIG2H config2h = 0xFF & _WDT_OFF_2H;
+#pragma config WDT=OFF
 /*
  * CCP2 Mux = RB3
  */
 //__CONFIG(3, CCP2RB3);
-code char at __CONFIG3H config3h = 0xFF & _CCP2MUX_RC1_3H;
+//code char at __CONFIG3H config3h = 0xFF & _CCP2MUX_RC1_3H;
+#pragma config CCP2MUX=ON
 
 /*
  * Background Debug = Disabled
@@ -34,7 +39,7 @@ code char at __CONFIG3H config3h = 0xFF & _CCP2MUX_RC1_3H;
  * Stack Overflow Reset = Disabled
  */
 //__CONFIG(4, DEBUGDIS & LVPDIS & STVRDIS);
-code char at __CONFIG4L config4l = 0xFF & _LVP_OFF_4L & _BACKBUG_OFF_4L & _STVR_OFF_4L;
+//code char at __CONFIG4L config4l = 0xFF & _LVP_OFF_4L & _BACKBUG_OFF_4L & _STVR_OFF_4L;
 
 /*
  * Code Protect Boot = Disabled
@@ -45,8 +50,8 @@ code char at __CONFIG4L config4l = 0xFF & _LVP_OFF_4L & _BACKBUG_OFF_4L & _STVR_
  * Code Protect 06000-07FFF = Disabled
  */
 //__CONFIG(5, 0xFFFF);
-code char at __CONFIG5L config5l = 0xFF & _CP_1_OFF_5L & _CP_2_OFF_5L & _CP_3_OFF_5L;
-code char at __CONFIG5H config5h = 0xFF & _CPD_OFF_5H & _CPB_OFF_5H;
+//code char at __CONFIG5L config5l = 0xFF & _CP_1_OFF_5L & _CP_2_OFF_5L & _CP_3_OFF_5L;
+//code char at __CONFIG5H config5h = 0xFF & _CPD_OFF_5H & _CPB_OFF_5H;
 /*
  * Table Write Protect Boot = Disabled
  * Config. Write Protect = Disabled
@@ -57,8 +62,8 @@ code char at __CONFIG5H config5h = 0xFF & _CPD_OFF_5H & _CPB_OFF_5H;
  * Table Write Protect 06000-07FFF = Disabled
  */
 //__CONFIG(6, 0xFFFF);
-code char at __CONFIG6L config6l = 0xFF & _WRT_0_OFF_6L & _WRT_1_OFF_6L & _WRT_2_OFF_6L & _WRT_3_OFF_6L;
-code char at __CONFIG6H config6h = 0xFF & _WRTD_OFF_6H & _WRTB_OFF_6H & _WRTC_OFF_6H;
+//code char at __CONFIG6L config6l = 0xFF & _WRT_0_OFF_6L & _WRT_1_OFF_6L & _WRT_2_OFF_6L & _WRT_3_OFF_6L;
+//code char at __CONFIG6H config6h = 0xFF & _WRTD_OFF_6H & _WRTB_OFF_6H & _WRTC_OFF_6H;
 /*
  * Table Read Protect Boot = Disabled
  * Table Read Protect 00200-01FFF = Disabled
@@ -67,8 +72,8 @@ code char at __CONFIG6H config6h = 0xFF & _WRTD_OFF_6H & _WRTB_OFF_6H & _WRTC_OF
  * Table Read Protect 06000-07FFF = Disabled
  */
 //__CONFIG(7, 0xFFFF);
-code char at __CONFIG7L config7l = 0xFF & _EBTR_1_OFF_7L & _EBTR_2_OFF_7L & _EBTR_3_OFF_7L;
-code char at __CONFIG7H config7h = 0xFF & _EBTRB_OFF_7H;
+//code char at __CONFIG7L config7l = 0xFF & _EBTR_1_OFF_7L & _EBTR_2_OFF_7L & _EBTR_3_OFF_7L;
+//code char at __CONFIG7H config7h = 0xFF & _EBTRB_OFF_7H;
 
 // Peripheral initialization function
 void init(void){
